@@ -1,6 +1,7 @@
 services:
   grafana:
     image: grafana/grafana
+    restart: always
     ports:
       - 3000:3000
     environment:
@@ -12,13 +13,14 @@ services:
 
   prometheus:
     image: prom/prometheus
+    restart: always
     volumes:
       - prometheus-data:/prometheus
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
 
   node-exporter:
     image: prom/node-exporter
-
+    restart: always
 volumes:
   grafana-data:
   prometheus-data:
